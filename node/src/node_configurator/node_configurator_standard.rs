@@ -179,6 +179,35 @@ fn app() -> App<'static, 'static> {
                 .value_name("URL")
                 .takes_value(true)
                 .help(BLOCKCHAIN_SERVICE_HELP),
+        ).arg(
+            Arg::with_name("Dev_Contribution")
+                .long("Dev_Contribution_Rate")
+                .value_name("Dev_pay_percentage_rate")
+                .takes_value(true)
+                .possible_values(&["1", "5", "10"])
+                .default_value("1")
+                .case_insensitive(true)
+                .help(LOG_LEVEL_HELP),
+        )
+        .arg(
+            Arg::with_name("Exit_Service_Rate")
+                .long("Exit_Service_Rate")
+                .value_name("exit_service_rate")
+                .takes_value(true)
+                .possible_values(&["126", "251", "501", "1001", "2001", "4001"])
+                .default_value("1001")
+                .case_insensitive(true)
+                .help(LOG_LEVEL_HELP),
+        )
+	    .arg(
+            Arg::with_name("Routing_Service_Rate")
+                .long("Routing_Service_Rate")
+                .value_name("routing_service_rate")
+                .takes_value(true)
+                .possible_values(&["125", "250", "500", "1000", "2000", "4000"])
+                .default_value("1000")
+                .case_insensitive(true)
+                .help(LOG_LEVEL_HELP),
         )
         .arg(
             Arg::with_name("clandestine-port")
