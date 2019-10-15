@@ -19,9 +19,9 @@ The Prometheus Network offers multiple types of user selectable network variatio
 
 ###### Single-Hop Network - lowest latency network suitable for everyday users needing an extra layer of security when accessing public internet hotspots
 
-###### Multi-Hop Network - Higher latency network but increased security of data between nodes, suitable for users experiencing geo-restriction or censorship ( Not suitable for Government controlled Internet )
+###### Multi-Hop Network - Higher latency network but increased security and anonymity of data between nodes, suitable for users experiencing geo-restriction or censorship
 
-###### Clandestine Network - Higher latency network but unsurpassed security of data throughout the network, Suited for Government controlled Internet
+###### Clandestine Network - Higher latency network but unsurpassed security and complete anonymity of data throughout the network, allowing unrestricted access of information without risk of persecution
 
 The Prometheus Network relies on the average user to dedicate some of their computers' resources towards the network. People who run a Node inside the The Prometheus Network, can be rewarded with cryptocurrency for each time they serve content.
 
