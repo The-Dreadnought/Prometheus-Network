@@ -86,14 +86,14 @@ whatever it was before when you're done with Prometheus Network and you want to 
 
 
 The Prometheus Network software includes a 
-[multi-platform DNS utility](https://github.com/SubstratumNetwork/SubstratumNode/tree/master/dns_utility) that you can use
+[multi-platform DNS utility](https://github.com/The-Dreadnought/Prometheus-Network/tree/master/dns_utility) that you can use
 to subvert your DNS settings to `127.0.0.1`, like this:
 ```
 $ cd <path to workspace>
-$ sudo SubstratumNode/dns_utility/target/release/dns_utility subvert
+$ sudo Prometheus/dns_utility/target/release/dns_utility subvert
 ```
 If you have trouble with `dns_utility` or you'd rather make your DNS configuration changes manually, look for 
-[instructions for your platform](https://github.com/SubstratumNetwork/SubstratumNode/tree/master/node/docs).
+[instructions for your platform](https://github.com/The-Dreadnought/Prometheus-Network/tree/master/node/docs).
 
 Once your DNS is successfully subverted, you can start the Prometheus Network itself.  Currently, there are two Network's offering the same type of connections.
 PrometheusNode & SubstratumNode they both can run: zero-hop and decentralized.
@@ -404,7 +404,7 @@ the network interface. There are many guides that you can find on the Internet b
 "How to Port Forwarding". Here is an example: [PortForward.com](https://portforward.com)
 
 More information on the operation, care, and feeding of the Neighborhood is available
-[in the neighborhood_subproject](https://github.com/SubstratumNetwork/SubstratumNode/tree/master/node/src/neighborhood).
+[in the neighborhood_subproject](https://github.com/The-Dreadnought/Prometheus-Network/tree/master/node/src/neighborhood).
 
 
 ### Terminating a Node (Zero-Hop or Decentralized)
@@ -412,7 +412,7 @@ More information on the operation, care, and feeding of the Neighborhood is avai
 To terminate the Node, just press Ctrl-C in the terminal window. Then you'll still need to revert your
 machine's DNS settings:
 ```
-$ sudo SubstratumNode/dns_utility/target/release/dns_utility revert
+$ sudo Prometheus/dns_utility/target/release/dns_utility revert
 ```
 This should have you using the Internet normally again.
 
