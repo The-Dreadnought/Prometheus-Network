@@ -23,7 +23,7 @@ The Prometheus Network offers multiple types of user selectable network variatio
 
 ###### Clandestine Network - Higher latency network but unsurpassed security of data throughout the network, Suited for Government controlled Internet
 
-The Prometheus Network relies on the average user runs to dedicate some of their computers' resources towards the network. People who run a Node inside the The Prometheus Network, can be rewarded with cryptocurrency for each time they serve content.
+The Prometheus Network relies on the average user to dedicate some of their computers' resources towards the network. People who run a Node inside the The Prometheus Network, can be rewarded with cryptocurrency for each time they serve content.
 
 Prometheus Network allows users to select what type of network they are needing for their specific needs. Inside every Prometheus Network are Nodes, which work together to relay CORES packages and content on the network. When a user requests a site, nodes use artificial intelligence to find the most expedient and secure way to get the information to that user. In Single-Hop, one node is selected to fulfill a single request in order to maintain a necessary level of security. In Multi-Hop and Clandestine Networks, Multiple nodes work to fulfill a single request in order to maintain a necessary level of anonymity.
 
