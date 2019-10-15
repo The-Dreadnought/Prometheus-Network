@@ -6,6 +6,7 @@ The Prometheus Network project was forked from Substratum's Node project in orde
 
 ## Story
 In Greek mythology, the Titan Prometheus had a reputation as being something of a clever trickster. Zeus tried punishing humankind by hiding from them the gift of fire. Prometheus didn’t think this just, so he stole the fire from Olympus and brought it back to earth in a fennel stack. 
+
 In addition to the theft of fire, Zeus had one more reason to be mad at Prometheus. Namely, being a Forethinker, Prometheus was the only one who knew the identity of the mortal woman Zeus wasn’t allowed to sleep with since it had been prophesized that the offspring of this marriage was destined to overthrow his father.
 
 
