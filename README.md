@@ -1,14 +1,15 @@
-Prometheus Network
-Source
+# Prometheus Network
+
+## Source
 
 The Prometheus Network project was forked from Substratum's Node project in order to carry on development after Substratum ceased operations in October of 2019. All credit for the original idea, the original design, and the first two years of ground work for the Prometheus Network development belongs to Substratum.
 
-Story
+## Story
 In Greek mythology, the Titan Prometheus had a reputation as being something of a clever trickster. Zeus tried punishing humankind by hiding from them the gift of fire. Prometheus didn’t think this just, so he stole the fire from Olympus and brought it back to earth in a fennel stack. 
 In addition to the theft of fire, Zeus had one more reason to be mad at Prometheus. Namely, being a Forethinker, Prometheus was the only one who knew the identity of the mortal woman Zeus wasn’t allowed to sleep with since it had been prophesized that the offspring of this marriage was destined to overthrow his father.
 
 
-Purpose
+## Purpose
 
 The Prometheus Network is an open-source network that allows anyone to allocate spare computing resources to make the internet a free and fair place for the entire world. It is a collection of uniquely nested networks consisting of multiple node clusters that securely delivers content without the need of a VPN or Tor.
 
