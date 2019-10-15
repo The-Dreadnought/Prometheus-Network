@@ -9,13 +9,14 @@ In Greek mythology, the Titan Prometheus had a reputation as being something of 
 In addition to the theft of fire, Zeus had one more reason to be mad at Prometheus. Namely, being a Forethinker, Prometheus was the only one who knew the identity of the mortal woman Zeus wasn’t allowed to sleep with since it had been prophesized that the offspring of this marriage was destined to overthrow his father.
 
 
+
 ## Purpose
 
 The Prometheus Network is an open-source network that allows anyone to allocate spare computing resources to make the internet a free and fair place for the entire world. It is a collection of uniquely nested networks consisting of multiple node clusters that securely delivers content without the need of a VPN or Tor.
 
 Because there's no single authority delivering or monitoring content, censorship and geo-restricted sites won't be an issue on the Prometheus Network. It doesn't matter where you live or what content you're accessing, everyone in the world sees the exact same content.
 
-The Prometheus Network offers multiple types of user selectable network variations all powered by different crypto fuels.
+The Prometheus Network offers multiple types of user selectable network variations all powered by crypto fuel.
 
 ###### Single-Hop Network - lowest latency network suitable for everyday users needing an extra layer of security when accessing public internet hotspots
 
@@ -36,7 +37,7 @@ To keep our source code consistently formatted, we use `rustfmt`, which is a plu
 build scripts to build the code, you'll need to [install this plugin in your Rust environment](https://github.com/rust-lang/rustfmt).
 (We use the stable version, not the nightly version.)
 
-Some Linux distributions (notably Ubuntu ≥16.04 Desktop) have an incompatibility with SubstratumNode. If you think
+Some Linux distributions (notably Ubuntu ≥16.04 Desktop) have an incompatibility with Prometheus Network. If you think
 you might be affected, see [The Port 53 Problem] for more information.
 
 If you're using Windows, you'll need to run the build scripts using `git-bash`. If you've cloned this repository, you
@@ -95,8 +96,8 @@ $ sudo Prometheus/dns_utility/target/release/dns_utility subvert
 If you have trouble with `dns_utility` or you'd rather make your DNS configuration changes manually, look for 
 [instructions for your platform](https://github.com/The-Dreadnought/Prometheus-Network/tree/master/node/docs).
 
-Once your DNS is successfully subverted, you can start the Prometheus Network itself.  Currently, there are two Network's offering the same type of connections.
-PrometheusNode & SubstratumNode they both can run: zero-hop and decentralized.
+Once your DNS is successfully subverted, you can start the Prometheus Network itself.  Currently, there are two options offering the same type of connections.
+PrometheusNode can run: zero-hop and decentralized.
 
 A zero-hop node is very easy to start, and it's self-contained: every zero-hop Node has an entire
 Network inside it.  However, it doesn't communicate with any other Nodes.  Every network transaction
