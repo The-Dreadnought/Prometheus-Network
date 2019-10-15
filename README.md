@@ -15,10 +15,13 @@ The Prometheus Network is an open-source network that allows anyone to allocate 
 
 Because there's no single authority delivering or monitoring content, censorship and geo-restricted sites won't be an issue on the Prometheus Network. It doesn't matter where you live or what content you're accessing, everyone in the world sees the exact same content.
 
-The Prometheus Network offers multiple types of user selectable network variations.
-Single-Hop Network - lowest latency network suitable for everyday users needing an extra layer of security when accessing public internet hotspots
-Multi-Hop Network - Higher latency network but increased security of data between nodes, suitable for users experiencing geo-restriction or censorship ( Not suitable for Government controlled Internet )
-Clandestine Network - Higher latency network but unsurpassed security of data throughout the network, Suited for Government controlled Internet
+The Prometheus Network offers multiple types of user selectable network variations all powered by different crypto fuels.
+
+###### Single-Hop Network - lowest latency network suitable for everyday users needing an extra layer of security when accessing public internet hotspots
+
+###### Multi-Hop Network - Higher latency network but increased security of data between nodes, suitable for users experiencing geo-restriction or censorship ( Not suitable for Government controlled Internet )
+
+###### Clandestine Network - Higher latency network but unsurpassed security of data throughout the network, Suited for Government controlled Internet
 
 The Prometheus Network relies on the average user runs to dedicate some of their computers' resources towards the network. People who run a Node inside the The Prometheus Network, can be rewarded with cryptocurrency for each time they serve content.
 
