@@ -124,7 +124,7 @@ impl ResolvConfDnsModifier {
 
     fn revert_contents(&self, contents_before: String) -> Result<String, String> {
         let mut contents_after = contents_before.clone();
-        let (begin, length) = match self.find_substratum_nameserver(&contents_after[..])? {
+        let (begin, length) = match self.find_prometheus_nameserver(&contents_after[..])? {
             Some(t) => t,
             None => return Ok(contents_before),
         };
