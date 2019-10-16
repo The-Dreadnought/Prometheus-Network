@@ -1,5 +1,5 @@
 // Copyright (c) 2017-2019, Substratum LLC (https://substratum.net) and/or its affiliates. All rights reserved.
-use crate::substratum_node::SubstratumNode;
+use crate::prometheus_node::PrometheusNode;
 use node_lib::neighborhood::gossip::{Gossip, GossipNodeRecord};
 use node_lib::neighborhood::AccessibleGossipRecord;
 use node_lib::sub_lib::cryptde::PublicKey;
@@ -125,7 +125,7 @@ impl From<&AccessibleGossipRecord> for SingleNode {
 }
 
 impl SingleNode {
-    pub fn new(node: &dyn SubstratumNode) -> SingleNode {
+    pub fn new(node: &dyn PrometheusNode) -> SingleNode {
         SingleNode {
             node: AccessibleGossipRecord::from(node),
         }
@@ -213,7 +213,7 @@ impl From<(&AccessibleGossipRecord, &AccessibleGossipRecord)> for Introduction {
 }
 
 impl Introduction {
-    pub fn new(introducer: &dyn SubstratumNode, introducee: &dyn SubstratumNode) -> Introduction {
+    pub fn new(introducer: &dyn PrometheusNode, introducee: &dyn PrometheusNode) -> Introduction {
         Introduction {
             introducer: AccessibleGossipRecord::from(introducer),
             introducee: AccessibleGossipRecord::from(introducee),
@@ -320,12 +320,12 @@ impl StandardBuilder {
         }
     }
 
-    pub fn add_substratum_node(
+    pub fn add_prometheus_node(
         self,
-        substratum_node: &dyn SubstratumNode,
+        prometheus_node: &dyn PrometheusNode,
         version: u32,
     ) -> StandardBuilder {
-        let mut agr = AccessibleGossipRecord::from(substratum_node);
+        let mut agr = AccessibleGossipRecord::from(prometheus_node);
         agr.inner.version = version;
         self.add_agr(&agr)
     }
