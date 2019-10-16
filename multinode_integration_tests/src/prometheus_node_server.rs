@@ -1,22 +1,22 @@
 // Copyright (c) 2017-2019, Substratum LLC (https://substratum.net) and/or its affiliates. All rights reserved.
 
-use crate::substratum_node_cluster::SubstratumNodeCluster;
+use crate::prometheus_node_cluster::PrometheusNodeCluster;
 use crate::utils;
 use std::io;
 use std::net::{Shutdown, SocketAddr, TcpListener, TcpStream};
 use std::time::Duration;
 
-pub struct SubstratumNodeServer {
+pub struct PrometheusNodeServer {
     socket_addr: SocketAddr,
     listener: TcpListener,
     stream_opt: Option<TcpStream>,
 }
 
-impl SubstratumNodeServer {
-    pub fn new(port: u16) -> SubstratumNodeServer {
-        let socket_addr = SocketAddr::new(SubstratumNodeCluster::host_ip_addr(), port);
+impl PrometheusNodeServer {
+    pub fn new(port: u16) -> PrometheusNodeServer {
+        let socket_addr = SocketAddr::new(PrometheusNodeCluster::host_ip_addr(), port);
         let listener = TcpListener::bind(socket_addr).unwrap();
-        SubstratumNodeServer {
+        PrometheusNodeServer {
             socket_addr,
             listener,
             stream_opt: None,
