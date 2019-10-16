@@ -1,10 +1,10 @@
 # hopper
-Micro routing for SubstratumNetwork traffic
+Micro routing for Prometheus Network traffic
 
 ## Purpose
 The purpose of `hopper` is to interpret CORES packages, determining their next destination --
-either inside the current SubstratumNode (i.e. to the ProxyServer or the ProxyClient)
-or on to the next SubstratumNode in its Route.
+either inside the current PrometheusNode (i.e. to the ProxyServer or the ProxyClient)
+or on to the next Node in its Route.
 
 It probably isn't the most interesting place to begin digging into our code;
 [node](https://github.com/SubstratumNetwork/SubstratumNode/tree/master/node)
