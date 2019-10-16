@@ -8,8 +8,8 @@ const log = require('electron-log')
 const td = require('testdouble')
 const { makeSpawnSyncResult } = require('./test_utilities')
 
-const nodePathUnix = `${path.resolve(__dirname, '.', '../dist/static/binaries/SubstratumNode')}`
-const nodePathWindows = `${path.resolve(__dirname, '.', '../dist/static/binaries/SubstratumNodeW')}`
+const nodePathUnix = `${path.resolve(__dirname, '.', '../dist/static/binaries/PrometheusNode')}`
+const nodePathWindows = `${path.resolve(__dirname, '.', '../dist/static/binaries/PrometheusNodeW')}`
 
 const commonArgs = [
   '--chain', 'chainName',
@@ -173,13 +173,13 @@ describe('CommandHelper', () => {
       describe('starting', () => {
         describe('when the environment variables SUDO_UID and SUDO_GID are missing', () => {
           beforeEach(() => {
-            subject.startSubstratumNode({}, 'callback')
+            subject.startPrometheusNode({}, 'callback')
           })
 
           it('executes the command via sudo prompt', () => {
             td.verify(sudoPrompt.exec(td.matchers.argThat(arg => {
-              return /[/\\]static[/\\]binaries[/\\]SubstratumNode" --dns-servers \d{1,3}\..* .*> \/dev\/null 2>&1/.test(arg)
-            }), { name: 'Substratum Node' }, 'callback'))
+              return /[/\\]static[/\\]binaries[/\\]PrometheusNode" --dns-servers \d{1,3}\..* .*> \/dev\/null 2>&1/.test(arg)
+            }), { name: 'Prometheus Node' }, 'callback'))
           })
         })
 
@@ -188,13 +188,13 @@ describe('CommandHelper', () => {
             process.env = { SUDO_UID: 'env-uid', SUDO_GID: 'env-gid' }
             subject = require('../src/command_helper')
 
-            subject.startSubstratumNode({}, 'callback')
+            subject.startPrometheusNode({}, 'callback')
           })
 
           it('executes the command via sudo prompt', () => {
             td.verify(sudoPrompt.exec(td.matchers.argThat(arg => {
-              return /[/\\]static[/\\]binaries[/\\]SubstratumNode" --dns-servers \d{1,3}\..* .*> \/dev\/null 2>&1/.test(arg)
-            }), { name: 'Substratum Node' }, 'callback'))
+              return /[/\\]static[/\\]binaries[/\\]PrometheusNode" --dns-servers \d{1,3}\..* .*> \/dev\/null 2>&1/.test(arg)
+            }), { name: 'Prometheus Node' }, 'callback'))
           })
         })
       })
@@ -210,13 +210,13 @@ describe('CommandHelper', () => {
       describe('starting', () => {
         describe('when the environment variables SUDO_UID and SUDO_GID are missing', () => {
           beforeEach(() => {
-            subject.startSubstratumNode({}, 'callback')
+            subject.startPrometheusNode({}, 'callback')
           })
           it('executes the command via sudo prompt', () => {
             td.verify(sudoPrompt.exec(td.matchers.argThat(arg => {
-              return /[/\\]static[/\\]binaries[/\\]SubstratumNode" --dns-servers \d{1,3}\..* .*> \/dev\/null 2>&1/.test(arg) &&
+              return /[/\\]static[/\\]binaries[/\\]PrometheusNode" --dns-servers \d{1,3}\..* .*> \/dev\/null 2>&1/.test(arg) &&
                 !arg.includes('--data-directory')
-            }), { name: 'Substratum Node' }, 'callback'))
+            }), { name: 'Prometheus Node' }, 'callback'))
           })
         })
 
@@ -225,14 +225,14 @@ describe('CommandHelper', () => {
             process.env = { SUDO_UID: 'env-uid', SUDO_GID: 'env-gid' }
             subject = require('../src/command_helper')
 
-            subject.startSubstratumNode({}, 'callback')
+            subject.startPrometheusNode({}, 'callback')
           })
 
           it('executes the command via sudo prompt', () => {
             td.verify(sudoPrompt.exec(td.matchers.argThat(arg => {
-              return /[/\\]static[/\\]binaries[/\\]SubstratumNode" --dns-servers \d{1,3}\..* .*> \/dev\/null 2>&1/.test(arg) &&
+              return /[/\\]static[/\\]binaries[/\\]PrometheusNode" --dns-servers \d{1,3}\..* .*> \/dev\/null 2>&1/.test(arg) &&
                 !arg.includes('--data-directory')
-            }), { name: 'Substratum Node' }, 'callback'))
+            }), { name: 'Prometheus Node' }, 'callback'))
           })
         })
       })
@@ -249,7 +249,7 @@ describe('CommandHelper', () => {
         beforeEach(() => {
           wasCalled = false
 
-          subject.stopSubstratumNode(e => {
+          subject.stopPrometheusNode(e => {
             error = e
             wasCalled = true
           })
@@ -272,7 +272,7 @@ describe('CommandHelper', () => {
           wasCalled = false
           td.when(process.kill(-1234)).thenThrow(new Error('whoa!'))
 
-          subject.stopSubstratumNode(function (e) {
+          subject.stopPrometheusNode(function (e) {
             error = e
             wasCalled = true
           })
@@ -292,33 +292,33 @@ describe('CommandHelper', () => {
 
       describe('when ip and neighbor are both provided', () => {
         beforeEach(() => {
-          subject.startSubstratumNode({ ip: 'abc', neighbor: 'hidelyho' }, 'callback')
+          subject.startPrometheusNode({ ip: 'abc', neighbor: 'hidelyho' }, 'callback')
         })
 
         it('provides them as command line arguments', () => {
-          td.verify(sudoPrompt.exec(td.matchers.contains(/--ip abc\s+--neighbors "hidelyho"/), { name: 'Substratum Node' }, 'callback'))
+          td.verify(sudoPrompt.exec(td.matchers.contains(/--ip abc\s+--neighbors "hidelyho"/), { name: 'Prometheus Node' }, 'callback'))
         })
       })
 
       describe('when ip is provided but neighbor is not', () => {
         beforeEach(() => {
-          subject.startSubstratumNode({ ip: 'abc' }, 'callback')
+          subject.startPrometheusNode({ ip: 'abc' }, 'callback')
         })
 
         it('provides ip but not neighbors', () => {
           td.verify(sudoPrompt.exec(td.matchers.argThat((args) => {
             return args.includes('--ip') && args.includes('abc') && !args.includes('--neighbors')
-          }), { name: 'Substratum Node' }, 'callback'))
+          }), { name: 'Prometheus Node' }, 'callback'))
         })
       })
 
       describe('when wallet address is provided', () => {
         beforeEach(() => {
-          subject.startSubstratumNode({ walletAddress: 'bazinga' }, 'callback')
+          subject.startPrometheusNode({ walletAddress: 'bazinga' }, 'callback')
         })
 
         it('provides wallet address command line argument', () => {
-          td.verify(sudoPrompt.exec(td.matchers.contains('--earning-wallet bazinga'), { name: 'Substratum Node' }, 'callback'))
+          td.verify(sudoPrompt.exec(td.matchers.contains('--earning-wallet bazinga'), { name: 'Prometheus Node' }, 'callback'))
         })
       })
     })
@@ -358,10 +358,10 @@ describe('CommandHelper', () => {
     })
 
     describe('starting', () => {
-      const command = /".*[/\\]static[/\\]binaries[/\\]SubstratumNodeW" --dns-servers \d{1,3}\..* .*> NUL 2>&1/
+      const command = /".*[/\\]static[/\\]binaries[/\\]PrometheusNodeW" --dns-servers \d{1,3}\..* .*> NUL 2>&1/
 
       beforeEach(() => {
-        subject.startSubstratumNode({}, 'callback')
+        subject.startPrometheusNode({}, 'callback')
       })
 
       it('executes the command via node cmd', () => {
@@ -371,7 +371,7 @@ describe('CommandHelper', () => {
 
     describe('stopping', () => {
       beforeEach(() => {
-        subject.stopSubstratumNode('callback')
+        subject.stopPrometheusNode('callback')
       })
 
       it('kills the process', () => {
@@ -382,7 +382,7 @@ describe('CommandHelper', () => {
     describe('getCommand', () => {
       describe('when neighbor is provided', () => {
         beforeEach(() => {
-          subject.startSubstratumNode({ neighbor: 'hidelyho' }, 'callback')
+          subject.startPrometheusNode({ neighbor: 'hidelyho' }, 'callback')
         })
 
         it('provides neighbors command line argument', () => {
@@ -392,7 +392,7 @@ describe('CommandHelper', () => {
 
       describe('when ip is provided', () => {
         beforeEach(() => {
-          subject.startSubstratumNode({ ip: 'abc' }, 'callback')
+          subject.startPrometheusNode({ ip: 'abc' }, 'callback')
         })
 
         it('provides ip command line argument', () => {
@@ -402,7 +402,7 @@ describe('CommandHelper', () => {
 
       describe('when wallet address is provided', () => {
         beforeEach(() => {
-          subject.startSubstratumNode({ walletAddress: 'bazinga' }, 'callback')
+          subject.startPrometheusNode({ walletAddress: 'bazinga' }, 'callback')
         })
 
         it('provides wallet address command line argument', () => {
@@ -412,7 +412,7 @@ describe('CommandHelper', () => {
 
       describe('when gas price is provided', () => {
         beforeEach(() => {
-          subject.startSubstratumNode({ networkSettings: { gasPrice: '23' } }, 'callback')
+          subject.startPrometheusNode({ networkSettings: { gasPrice: '23' } }, 'callback')
         })
 
         it('provides gas price command line argument', () => {
@@ -422,7 +422,7 @@ describe('CommandHelper', () => {
 
       describe('when blockchain service url is provided', () => {
         beforeEach(() => {
-          subject.startSubstratumNode({ blockchainServiceUrl: 'http://this-is-your-url' }, 'callback')
+          subject.startPrometheusNode({ blockchainServiceUrl: 'http://this-is-your-url' }, 'callback')
         })
 
         it('provides blockchain service url command line argument', () => {
@@ -432,7 +432,7 @@ describe('CommandHelper', () => {
 
       describe('when blockchain network ropsten is specified', () => {
         beforeEach(() => {
-          subject.startSubstratumNode({ chainName: 'ropsten', ip: '4.3.2.1' }, 'callback')
+          subject.startPrometheusNode({ chainName: 'ropsten', ip: '4.3.2.1' }, 'callback')
         })
 
         it('provides blockchain service url command line argument', () => {
@@ -442,7 +442,7 @@ describe('CommandHelper', () => {
 
       describe('when blockchain network mainnet is specified', () => {
         beforeEach(() => {
-          subject.startSubstratumNode({ chainName: 'mainnet', ip: '1.2.3.4' }, 'callback')
+          subject.startPrometheusNode({ chainName: 'mainnet', ip: '1.2.3.4' }, 'callback')
         })
 
         it('provides blockchain network command line argument', () => {
@@ -452,7 +452,7 @@ describe('CommandHelper', () => {
 
       describe('when no blockchain network is specified', () => {
         beforeEach(() => {
-          subject.startSubstratumNode({ ip: '1.2.3.4' }, 'callback')
+          subject.startPrometheusNode({ ip: '1.2.3.4' }, 'callback')
         })
 
         it('provides no blockchain network command line argument', () => {
