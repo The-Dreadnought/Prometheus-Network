@@ -2,7 +2,7 @@
 
 ## Source
 
-The Prometheus Network was forked from Substratum Network's Node project in order to carry on development after Substratum Network ceased operations in October of 2019. All credit for the original idea, the original design, and the first two years of ground work for the Prometheus Network development belongs to Substratum Network. *Special Credit goes to Developers Dan W. and Steve S.
+The Prometheus Network was forked from Substratum Network's Node project in order to carry on development after Substratum Network ceased operations in October of 2019. All credit for the original idea, the original design, and the first two years of ground work for the Prometheus Network development belongs to Substratum Network. * ###### Special Credit goes to Developers Dan W. and Steve S. *
 
 ## Story
 
