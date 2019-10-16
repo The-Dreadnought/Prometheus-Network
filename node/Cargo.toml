@@ -72,11 +72,11 @@ openssl = {version = "0.10.24", features = ["vendored"]}
 [target.'cfg(target_os = "windows")'.dependencies]
 
 [[bin]]
-name = "SubstratumNode"
+name = "PrometheusNode"
 path = "src/main.rs"
 
 [[bin]]
-name = "SubstratumNodeW"
+name = "PrometheusNodeW"
 path = "src/main_win.rs"
 
 [lib]
