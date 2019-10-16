@@ -2,14 +2,11 @@
 
 ## Source
 
-The Prometheus Network was forked from Substratum Network's Node project in order to carry on development after Substratum Network ceased operations in October of 2019. All credit for the original idea, the original design, and the first two years of ground work for the Prometheus Network development belongs to Substratum Network.
+The Prometheus Network was forked from Substratum Network's Node project in order to carry on development after Substratum Network ceased operations in October of 2019. All credit for the original idea, the original design, and the first two years of ground work for the Prometheus Network development belongs to Substratum Network. *Special Credit goes to Developers Dan W. and Steve S.
 
 ## Story
 
 In Greek mythology, the Titan Prometheus had a reputation as being something of a clever trickster. Zeus tried punishing humanity by hiding from them the gift of fire. Prometheus didn’t think this just, so he stole the fire from Olympus and brought it back to earth in a fennel stack and provided humanity with the greatest tool known at that time. Today our greatest tool is information and the Prometheus Network is providing humanity with this tool. 
-
-In addition to the theft of fire, Zeus had one more reason to be mad at Prometheus. Namely, being a Forethinker, Prometheus was the only one who knew the identity of the mortal woman Zeus wasn’t allowed to be with since it had been prophesized that the offspring was destined to overthrow his father.    
-
 
 
 ## Purpose
