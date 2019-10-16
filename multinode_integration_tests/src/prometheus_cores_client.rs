@@ -1,5 +1,6 @@
 // Copyright (c) 2017-2019, Substratum LLC (https://substratum.net) and/or its affiliates. All rights reserved.
-use crate::substratum_node_client::SubstratumNodeClient;
+
+use crate::prometheus_node_client::PrometheusNodeClient;
 use node_lib::hopper::live_cores_package::LiveCoresPackage;
 use node_lib::json_masquerader::JsonMasquerader;
 use node_lib::masquerader::Masquerader;
@@ -10,16 +11,16 @@ use node_lib::sub_lib::hopper::IncipientCoresPackage;
 use serde_cbor;
 use std::net::SocketAddr;
 
-pub struct SubstratumCoresClient<'a> {
+pub struct PrometheusCoresClient<'a> {
     cryptde: &'a dyn CryptDE,
-    delegate: SubstratumNodeClient,
+    delegate: PrometheusNodeClient,
 }
 
-impl<'a> SubstratumCoresClient<'a> {
-    pub fn new(socket_addr: SocketAddr, cryptde: &'a dyn CryptDE) -> SubstratumCoresClient<'a> {
-        SubstratumCoresClient {
+impl<'a> PrometheusCoresClient<'a> {
+    pub fn new(socket_addr: SocketAddr, cryptde: &'a dyn CryptDE) -> PrometheusCoresClient<'a> {
+        PrometheusCoresClient {
             cryptde,
-            delegate: SubstratumNodeClient::new(socket_addr),
+            delegate: PrometheusNodeClient::new(socket_addr),
         }
     }
 
