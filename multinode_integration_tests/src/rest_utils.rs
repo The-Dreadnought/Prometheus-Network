@@ -1,7 +1,7 @@
 // Copyright (c) 2017-2019, Substratum LLC (https://substratum.net) and/or its affiliates. All rights reserved.
 
 use crate::command::Command;
-use crate::substratum_node::SubstratumNodeUtils;
+use crate::prometheus_node::PrometheusNodeUtils;
 
 pub struct RestServer<'a> {
     pub name: &'a str,
@@ -9,7 +9,7 @@ pub struct RestServer<'a> {
 
 impl<'a> RestServer<'a> {
     pub fn start(&self) {
-        SubstratumNodeUtils::clean_up_existing_container(self.name);
+        PrometheusNodeUtils::clean_up_existing_container(self.name);
         let args = vec![
             "run",
             "--detach",
@@ -37,6 +37,6 @@ impl<'a> RestServer<'a> {
 
 impl<'a> Drop for RestServer<'a> {
     fn drop(&mut self) {
-        SubstratumNodeUtils::stop(self.name);
+        PrometheusNodeUtils::stop(self.name);
     }
 }
