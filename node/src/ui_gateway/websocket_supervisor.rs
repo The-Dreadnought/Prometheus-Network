@@ -135,7 +135,7 @@ impl WebSocketSupervisorReal {
     ) {
         if !upgrade
             .protocols()
-            .contains(&String::from("SubstratumNode-UI"))
+            .contains(&String::from("PrometheusNode-UI"))
         {
             Self::reject_upgrade_request(upgrade, &logger);
         } else {
@@ -153,7 +153,7 @@ impl WebSocketSupervisorReal {
         info!(logger_clone, "UI connected at {}", socket_addr);
         let upgrade_future =
             upgrade
-                .use_protocol("SubstratumNode-UI")
+                .use_protocol("PrometheusNode-UI")
                 .accept()
                 .map(move |(client, _)| {
                     Self::handle_connection(client, &inner, &logger_clone, socket_addr);
@@ -169,7 +169,7 @@ impl WebSocketSupervisorReal {
     fn reject_upgrade_request(upgrade: WsUpgrade<TcpStream, BytesMut>, logger: &Logger) {
         info!(
             logger,
-            "UI attempted connection without protocol SubstratumNode-UI: {:?}",
+            "UI attempted connection without protocol PrometheusNode-UI: {:?}",
             upgrade.protocols()
         );
         tokio::spawn(upgrade.reject().then(|_| ok::<(), ()>(())));
@@ -513,7 +513,7 @@ mod tests {
 
         let tlh = TestLogHandler::new();
         tlh.await_log_containing(
-            "UI attempted connection without protocol SubstratumNode-UI: [\"bad-protocol\"]",
+            "UI attempted connection without protocol PrometheusNode-UI: [\"bad-protocol\"]",
             1000,
         );
     }
@@ -538,7 +538,7 @@ mod tests {
             system.run();
         });
 
-        let mut client = wait_for_client(port, "SubstratumNode-UI");
+        let mut client = wait_for_client(port, "PrometheusNode-UI");
 
         client
             .send_message(&Message::binary(vec![1u8, 2u8, 3u8, 4u8]))
@@ -585,8 +585,8 @@ mod tests {
             system.run();
         });
 
-        let mut one_client = wait_for_client(port, "SubstratumNode-UI");
-        let mut another_client = make_client(port, "SubstratumNode-UI").unwrap();
+        let mut one_client = wait_for_client(port, "PrometheusNode-UI");
+        let mut another_client = make_client(port, "PrometheusNode-UI").unwrap();
 
         one_client.send_message(&Message::text("One")).unwrap();
         another_client
@@ -645,7 +645,7 @@ mod tests {
             system.run();
         });
 
-        let mut client = wait_for_client(port, "SubstratumNode-UI");
+        let mut client = wait_for_client(port, "PrometheusNode-UI");
 
         let neighborhood_dot_graph_request =
             serde_json::to_string(&UiMessage::NeighborhoodDotGraphRequest).unwrap();
@@ -682,7 +682,7 @@ mod tests {
             system.run();
         });
 
-        let mut client = wait_for_client(port, "SubstratumNode-UI");
+        let mut client = wait_for_client(port, "PrometheusNode-UI");
 
         let neighborhood_dot_graph_request =
             serde_json::to_string(&UiMessage::NeighborhoodDotGraphRequest).unwrap();
@@ -758,7 +758,7 @@ mod tests {
             system.run();
         });
 
-        let mut client = wait_for_client(port, "SubstratumNode-UI");
+        let mut client = wait_for_client(port, "PrometheusNode-UI");
 
         client.send_message(&Message::text("One")).unwrap();
         client.send_message(&Message::close()).unwrap();
@@ -796,7 +796,7 @@ mod tests {
             actix::spawn(subject);
             system.run();
         });
-        let mut client = wait_for_client(port, "SubstratumNode-UI");
+        let mut client = wait_for_client(port, "PrometheusNode-UI");
         client.send_message(&Message::text("One")).unwrap();
 
         {
