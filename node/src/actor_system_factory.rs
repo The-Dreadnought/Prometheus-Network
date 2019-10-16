@@ -1,4 +1,5 @@
 // Copyright (c) 2017-2019, Substratum LLC (https://substratum.net) and/or its affiliates. All rights reserved.
+
 use super::accountant::Accountant;
 use super::bootstrapper;
 use super::bootstrapper::BootstrapperConfig;
@@ -1005,7 +1006,7 @@ mod tests {
             real_user: RealUser::null(),
         };
         let (tx, rx) = mpsc::channel();
-        let system = System::new("SubstratumNode");
+        let system = System::new("PrometheusNode");
 
         ActorSystemFactoryReal::prepare_initial_messages(
             cryptde(),
@@ -1107,7 +1108,7 @@ mod tests {
             real_user: RealUser::null(),
         };
         let (tx, _) = mpsc::channel();
-        let system = System::new("SubstratumNode");
+        let system = System::new("PrometheusNode");
 
         ActorSystemFactoryReal::prepare_initial_messages(
             cryptde(),
