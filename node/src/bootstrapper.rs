@@ -1,4 +1,5 @@
 // Copyright (c) 2017-2019, Substratum LLC (https://substratum.net) and/or its affiliates. All rights reserved.
+
 use crate::accountant::{DEFAULT_PAYABLE_SCAN_INTERVAL, DEFAULT_PAYMENT_RECEIVED_SCAN_INTERVAL};
 use crate::actor_system_factory::ActorFactoryReal;
 use crate::actor_system_factory::ActorSystemFactory;
@@ -425,7 +426,7 @@ impl Bootstrapper {
                 cryptde.public_key_to_descriptor_fragment(&cryptde.public_key())
             ),
         };
-        let descriptor_msg = format!("SubstratumNode local descriptor: {}", descriptor);
+        let descriptor_msg = format!("PrometheusNode local descriptor: {}", descriptor);
         writeln!(streams.stdout, "{}", descriptor_msg).expect("Internal error");
         info!(Logger::new("Bootstrapper"), "{}", descriptor_msg);
         descriptor
@@ -661,7 +662,7 @@ mod tests {
 
     fn make_default_cli_params() -> Vec<String> {
         vec![
-            String::from("SubstratumNode"),
+            String::from("PrometheusNode"),
             String::from("--dns-servers"),
             String::from("222.222.222.222"),
             String::from("--ip"),
@@ -768,7 +769,7 @@ mod tests {
 
         subject.initialize_as_privileged(
             &vec![
-                "SubstratumNode".to_string(),
+                "PrometheusNode".to_string(),
                 "--neighborhood-mode".to_string(),
                 "zero-hop".to_string(),
             ],
@@ -840,7 +841,7 @@ mod tests {
 
         subject.initialize_as_unprivileged(
             &vec![
-                "SubstratumNode".to_string(),
+                "PrometheusNode".to_string(),
                 String::from("--data-directory"),
                 data_dir.to_str().unwrap().to_string(),
             ],
@@ -869,7 +870,7 @@ mod tests {
 
         subject.initialize_as_unprivileged(
             &vec![
-                "SubstratumNode".to_string(),
+                "PrometheusNode".to_string(),
                 String::from("--data-directory"),
                 data_dir.to_str().unwrap().to_string(),
                 String::from("--gas-price"),
@@ -899,7 +900,7 @@ mod tests {
             .add_listener_handler(third_handler)
             .build();
         let args = &vec![
-            String::from("SubstratumNode"),
+            String::from("PrometheusNode"),
             String::from("--dns-servers"),
             String::from("222.222.222.222"),
             String::from("--neighborhood-mode"),
@@ -928,7 +929,7 @@ mod tests {
             "init_as_privileged_stores_dns_servers_and_passes_them_to_actor_system_factory_for_proxy_client_in_init_as_unprivileged",
         );
         let args = &vec![
-            String::from("SubstratumNode"),
+            String::from("PrometheusNode"),
             String::from("--dns-servers"),
             String::from("1.2.3.4,2.3.4.5"),
             String::from("--ip"),
@@ -983,7 +984,7 @@ mod tests {
 
         subject.initialize_as_privileged(
             &vec![
-                String::from("SubstratumNode"),
+                String::from("PrometheusNode"),
                 String::from("--dns-servers"),
                 String::from("1.1.1.1"),
                 String::from("--ip"),
@@ -1043,7 +1044,7 @@ mod tests {
             "{}:2.3.4.5:3456;4567",
             cryptde_ref.public_key_to_descriptor_fragment(cryptde_ref.public_key())
         );
-        let regex = Regex::new(r"SubstratumNode local descriptor: (.+?)\n")
+        let regex = Regex::new(r"PrometheusNode local descriptor: (.+?)\n")
             .expect("Couldn't compile regular expression");
         let captured_descriptor = regex
             .captures(stdout_dump.as_str())
@@ -1054,7 +1055,7 @@ mod tests {
         assert_eq!(captured_descriptor, expected_descriptor);
         TestLogHandler::new().exists_log_containing(
             format!(
-                "INFO: Bootstrapper: SubstratumNode local descriptor: {}",
+                "INFO: Bootstrapper: PrometheusNode local descriptor: {}",
                 expected_descriptor
             )
             .as_str(),
@@ -1099,7 +1100,7 @@ mod tests {
             "{}::",
             cryptde_ref.public_key_to_descriptor_fragment(cryptde_ref.public_key())
         );
-        let regex = Regex::new(r"SubstratumNode local descriptor: (.+?)\n")
+        let regex = Regex::new(r"PrometheusNode local descriptor: (.+?)\n")
             .expect("Couldn't compile regular expression");
         let captured_descriptor = regex
             .captures(stdout_dump.as_str())
@@ -1110,7 +1111,7 @@ mod tests {
         assert_eq!(captured_descriptor, expected_descriptor);
         TestLogHandler::new().exists_log_containing(
             format!(
-                "INFO: Bootstrapper: SubstratumNode local descriptor: {}",
+                "INFO: Bootstrapper: PrometheusNode local descriptor: {}",
                 expected_descriptor
             )
             .as_str(),
@@ -1154,7 +1155,7 @@ mod tests {
 
         subject.initialize_as_privileged(
             &vec![
-                "SubstratumNode".to_string(),
+                "PrometheusNode".to_string(),
                 "--dns-servers".to_string(),
                 "1.1.1.1".to_string(),
                 "--ip".to_string(),
@@ -1166,7 +1167,7 @@ mod tests {
         );
         subject.initialize_as_unprivileged(
             &vec![
-                "SubstratumNode".to_string(),
+                "PrometheusNode".to_string(),
                 "--clandestine-port".to_string(),
                 "1234".to_string(),
                 String::from("--data-directory"),
@@ -1191,7 +1192,7 @@ mod tests {
         let data_dir = ensure_node_home_directory_exists("bootstrapper", "initialize_as_unprivileged_moves_streams_from_listener_handlers_to_stream_handler_pool");
         init_test_logging();
         let args = vec![
-            "SubstratumNode".to_string(),
+            "PrometheusNode".to_string(),
             String::from("--ip"),
             String::from("111.111.111.111"),
             String::from("--data-directory"),
@@ -1286,7 +1287,7 @@ mod tests {
             .add_listener_handler(Box::new(another_listener_handler))
             .build();
         let args = vec![
-            String::from("SubstratumNode"),
+            String::from("PrometheusNode"),
             String::from("--dns-servers"),
             String::from("222.222.222.222"),
             String::from("--neighborhood-mode"),
