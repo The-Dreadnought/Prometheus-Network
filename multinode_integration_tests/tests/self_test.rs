@@ -1,13 +1,14 @@
 // Copyright (c) 2017-2019, Substratum LLC (https://substratum.net) and/or its affiliates. All rights reserved.
 
+
 use multinode_integration_tests_lib::command::Command;
 use multinode_integration_tests_lib::main::CONTROL_STREAM_PORT;
-use multinode_integration_tests_lib::substratum_cores_client::SubstratumCoresClient;
-use multinode_integration_tests_lib::substratum_cores_server::SubstratumCoresServer;
-use multinode_integration_tests_lib::substratum_node::PortSelector;
-use multinode_integration_tests_lib::substratum_node::SubstratumNode;
-use multinode_integration_tests_lib::substratum_node_cluster::SubstratumNodeCluster;
-use multinode_integration_tests_lib::substratum_real_node::NodeStartupConfigBuilder;
+use multinode_integration_tests_lib::prometheus_cores_client::PrometheusCoresClient;
+use multinode_integration_tests_lib::prometheus_cores_server::PrometheusCoresServer;
+use multinode_integration_tests_lib::prometheus_node::PortSelector;
+use multinode_integration_tests_lib::prometheus_node::PrometheusNode;
+use multinode_integration_tests_lib::prometheus_node_cluster::PrometheusNodeCluster;
+use multinode_integration_tests_lib::prometheus_real_node::NodeStartupConfigBuilder;
 use node_lib::blockchain::blockchain_interface::contract_address;
 use node_lib::json_masquerader::JsonMasquerader;
 use node_lib::sub_lib::cryptde::PublicKey;
@@ -26,8 +27,8 @@ use std::str::FromStr;
 use std::time::Duration;
 
 #[test]
-fn establishes_substratum_node_cluster_from_nothing() {
-    let mut cluster = SubstratumNodeCluster::start().unwrap();
+fn establishes_prometheus_node_cluster_from_nothing() {
+    let mut cluster = PrometheusNodeCluster::start().unwrap();
     assert_eq!(network_is_running(), true);
     let real_node_name = "test_node_1";
     let mock_node_name = "mock_node_2";
@@ -62,11 +63,11 @@ fn establishes_substratum_node_cluster_from_nothing() {
 
 #[test]
 fn server_relays_cores_package() {
-    let cluster = SubstratumNodeCluster::start().unwrap();
+    let cluster = PrometheusNodeCluster::start().unwrap();
     let masquerader = JsonMasquerader::new();
-    let server = SubstratumCoresServer::new(cluster.chain_id);
+    let server = PrometheusCoresServer::new(cluster.chain_id);
     let cryptde = server.cryptde();
-    let mut client = SubstratumCoresClient::new(server.local_addr(), cryptde);
+    let mut client = PrometheusCoresClient::new(server.local_addr(), cryptde);
     let mut route = Route::one_way(
         RouteSegment::new(
             vec![&cryptde.public_key(), &cryptde.public_key()],
@@ -102,7 +103,7 @@ fn server_relays_cores_package() {
 #[test]
 fn one_mock_node_talks_to_another() {
     let masquerader = JsonMasquerader::new();
-    let mut cluster = SubstratumNodeCluster::start().unwrap();
+    let mut cluster = PrometheusNodeCluster::start().unwrap();
     cluster.start_mock_node_with_public_key(vec![5550], &PublicKey::new(&[1, 2, 3, 4]));
     cluster.start_mock_node_with_public_key(vec![5551], &PublicKey::new(&[2, 3, 4, 5]));
     let mock_node_1 = cluster.get_mock_node_by_name("mock_node_1").unwrap();
@@ -153,7 +154,7 @@ fn one_mock_node_talks_to_another() {
     );
 }
 
-fn check_node(cluster: &SubstratumNodeCluster, name: &str, ip_address: &str, port: u16) {
+fn check_node(cluster: &PrometheusNodeCluster, name: &str, ip_address: &str, port: u16) {
     let node = cluster
         .get_node_by_name(name)
         .expect(format!("Couldn't find node {} to check", name).as_str());
