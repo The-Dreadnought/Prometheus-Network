@@ -1,9 +1,9 @@
-name = "SubstratumNode"
-identifier = "net.substratum.node"
-icon = ["substratum.png"]
+name = "PrometheusNode"
+identifier = "net.prometheus.node"
+icon = ["Prometheus.png"]
 version = "1.0.0"
-copyright = "Copyright (c) Substratum Services 2017. All rights reserved."
-short_description = "SubstratumNode for the decentralized web"
+copyright = "Copyright (c) Prometheus Network Solutions 2019. All rights reserved."
+short_description = "Prometheus Network Solutions"
 long_description = """
-SubstratumNode allows members to make money while they sleep.
+PrometheusNode allows users to acquire cryptocurrency while contributing in a decentralized network.
 """
