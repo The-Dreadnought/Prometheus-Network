@@ -2,7 +2,7 @@
 name = "node"
 version = "1.0.0-rc.4"
 license = "GPL-3.0-only"
-authors = ["Substratum Services", “The-Dreadnought”]
+authors = ["Substratum Services", “Prometheus Network Solutions”]
 copyright = "Copyright (c) 2017-2019, Substratum LLC (https://substratum.net) and/or its affiliates. All rights reserved."
 description = "Prometheus Node is the foundation of Prometheus-Network, an open-source network that allows anyone to allocate spare computing resources to make the internet a free and fair place for the entire world."
 edition = "2018"
