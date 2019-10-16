@@ -2,7 +2,7 @@
 
 ## Source
 
-The Prometheus Network project was forked from Prometheus Network's Node project in order to carry on development after Prometheus Network ceased operations in October of 2019. All credit for the original idea, the original design, and the first two years of ground work for the Prometheus Network development belongs to Prometheus Network.
+The Prometheus Network was forked from Substratum Network's Node project in order to carry on development after Substratum Network ceased operations in October of 2019. All credit for the original idea, the original design, and the first two years of ground work for the Prometheus Network development belongs to Substratum Network.
 
 ## Story
 In Greek mythology, the Titan Prometheus had a reputation as being something of a clever trickster. Zeus tried punishing humankind by hiding from them the gift of fire. Prometheus didn’t think this just, so he stole the fire from Olympus and brought it back to earth in a fennel stack. 
