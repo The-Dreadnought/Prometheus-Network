@@ -4,7 +4,7 @@ version = "1.0.0-rc.4"
 license = "GPL-3.0-only"
 authors = ["Substratum Services", “The-Dreadnought”]
 copyright = "Copyright (c) 2017-2019, Substratum LLC (https://substratum.net) and/or its affiliates. All rights reserved."
-description = "PrometheusNode is the foundation of PrometheusNetwork, an open-source network that allows anyone to allocate spare computing resources to make the internet a free and fair place for the entire world."
+description = "Prometheus Node is the foundation of Prometheus-Network, an open-source network that allows anyone to allocate spare computing resources to make the internet a free and fair place for the entire world."
 edition = "2018"
 
 [workspace]
@@ -72,11 +72,11 @@ openssl = {version = "0.10.24", features = ["vendored"]}
 [target.'cfg(target_os = "windows")'.dependencies]
 
 [[bin]]
-name = "PrometheusNode"
+name = "SubstratumNode"
 path = "src/main.rs"
 
 [[bin]]
-name = "PrometheusNodeW"
+name = "SubstratumNodeW"
 path = "src/main_win.rs"
 
 [lib]
