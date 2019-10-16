@@ -2,7 +2,7 @@
 
 ## Source
 
-The Prometheus Network project was forked from Substratum's Node project in order to carry on development after Substratum ceased operations in October of 2019. All credit for the original idea, the original design, and the first two years of ground work for the Prometheus Network development belongs to Substratum.
+The Prometheus Network project was forked from Prometheus Network's Node project in order to carry on development after Prometheus Network ceased operations in October of 2019. All credit for the original idea, the original design, and the first two years of ground work for the Prometheus Network development belongs to Prometheus Network.
 
 ## Story
 In Greek mythology, the Titan Prometheus had a reputation as being something of a clever trickster. Zeus tried punishing humankind by hiding from them the gift of fire. Prometheus didn’t think this just, so he stole the fire from Olympus and brought it back to earth in a fennel stack. 
@@ -143,11 +143,11 @@ against other applications that might look for a similar variable.
 ##### Configuration File
 
 The configuration file, by default, resides in the data directory (see the `--data-directory` parameter for further
-information) and is named `config.toml`. If you leave the configuration file unspecified, this is where SubstratumNode
+information) and is named `config.toml`. If you leave the configuration file unspecified, this is where Prometheus NetworkNode
 will look for it. If it's found, it will be used; if it's not, Node will act as though it had been found but empty.
 But if you want to use a different file, specify it either as `--config-file` on the command line or as `SUB_CONFIG_FILE`
-in the environment. If you specify a relative filename, SubstratumNode will look for the configuration file in the data
-directory; if you specify an absolute filename, SubstratumNode will not use the data directory to find the configuration
+in the environment. If you specify a relative filename, Prometheus NetworkNode will look for the configuration file in the data
+directory; if you specify an absolute filename, Prometheus NetworkNode will not use the data directory to find the configuration
 file.
 
 The configuration file should be in TOML format. TOML is a competitor to other formats like JSON and YAML, but the
@@ -167,7 +167,7 @@ clandestine-port = 1234
 ```
 
 Keep in mind that a configuration file is persistent information: anyone who has or can gain read access to the file
-can read whatever's in it, whether SubstratumNode is running or not. Therefore, the configuration file may not be the 
+can read whatever's in it, whether Prometheus NetworkNode is running or not. Therefore, the configuration file may not be the 
 best place to specify sensitive or secret configuration information. (Nothing prevents you from doing this, though, so 
 be careful.)
 
@@ -181,7 +181,7 @@ In the above example, we're using Cloudflare's DNS, `1.1.1.1`, but you can use y
 If you can't choose just one favorite DNS, you can also specify multiple ones, separated by a comma but no space (`,`).
 
 _Why do we specify `--dns-servers`? Nodes still need to talk to the greater Internet.
-See [the ProxyClient README](https://github.com/SubstratumNetwork/SubstratumNode/tree/master/node/src/proxy_client)
+See [the ProxyClient README](https://github.com/Prometheus NetworkNetwork/Prometheus NetworkNode/tree/master/node/src/proxy_client)
 for more information._
 
 #### Running a Decentralized Node locally
@@ -196,7 +196,7 @@ from which it will make payments for the services other nodes provide).
 Configuring wallets is not a trivial task, so Node provides two special execution modes to help you do this, in
 addition to the normal long-running Service mode.
 
-1. __Generate mode -__ When you start SubstratumNode in Generate mode, it will generate a new BIP39 mnemonic phrase compatible 
+1. __Generate mode -__ When you start Prometheus NetworkNode in Generate mode, it will generate a new BIP39 mnemonic phrase compatible 
 with wallet software (*e.g.* Metamask, MEW) or hardware devices (*e.g.* Ledger, Trezor) and new earning and consuming wallets
 for you based on BIP44 derivation paths. It will display this information on the console, and immediately terminate.
 You **MUST** record the mnemonic phrase exactly as displayed along with the mnemonic passphrase you provide and 
@@ -210,7 +210,7 @@ can start it in Recover mode and tell it about those wallets. It will store the 
 terminate. Do not run with administrative privileges (`sudo` on Linux and macOS, a command window started as Administrator in
 Windows).
 
-1. __Service mode -__ When started in Service mode, Node will come up, join the Substratum Network, and start
+1. __Service mode -__ When started in Service mode, Node will come up, join the Prometheus Network Network, and start
 serving and consuming clandestine data until you stop it. Since Service mode requires listening on low-numbered
 restricted ports, starting Node in Service mode requires administrative privilege (`sudo` on Linux and macOS, a
 command window started as Administrator in Windows).
@@ -236,7 +236,7 @@ line to avoid unpleasantness.
 
 * `--earning-wallet <WALLET-ADDRESS> | <BIP44 DERIVATION PATH>` 
 If you specify this with an Ethereum address ("0x" followed by 40 hexadecimal digits), Node will use the address to
-identify your earning wallet. If you specify a derivation path, SubstratumNode will use the mnemonic phrase (either the one
+identify your earning wallet. If you specify a derivation path, Prometheus NetworkNode will use the mnemonic phrase (either the one
 you specify in Recover mode or the one node generates in Generate mode) and this derivation path to compute the
 address of your earning wallet. If you don't specify `--earning-wallet` at all, node will use a default of
 m/44'/60'/0'/0/1. Note that a derivation path will almost always have single quotes in it, so double-quote it 
@@ -245,21 +245,21 @@ on the command line to avoid unpleasantness.
 * `--language <English | 中文(简体) | 中文(繁體) | Français | Italiano | 日本語 | 한국어 | Español>` HD wallets spring from a 
 single master keypair, which takes friendly form as a "mnemonic
 phrase" consisting of some number of standardized words in a particular order. Each word represents a
-particular bit pattern in the keypair. SubstratumNode supports mnemonic phrases in a variety of languages.
+particular bit pattern in the keypair. Prometheus NetworkNode supports mnemonic phrases in a variety of languages.
 Specify the language in which you wish the mnemonic phrase to be generated (Generate mode) or in which
 you wish to supply the mnemonic phrase (Recover mode) with the `--language` parameter. Defaults to
 English.
 
 * `--word-count <12 | 15 | 18 | 21 | 24>` (Generate mode only) The mnemonic phrase that represents your master keypair can have
 different numbers of words in it. Shorter phrases are easier to remember; longer phrases are more secure.
-This is the number of words you want to be in the mnemonic phrase SubstratumNode generates for you. Default is 12 for the 
+This is the number of words you want to be in the mnemonic phrase Prometheus NetworkNode generates for you. Default is 12 for the 
 Ropsten testnet, and 24 for the Ethereum mainnet. 
 
 * `--mnemonic <BIP39 WORDS>` (Recover mode only) Specify the mnemonic phrase from which the consuming and earning wallets
 are derived. Remember to double-quote the phrase. Do not include the mnemonic passphrase here. Keep in mind
 that this is highly sensitive information; if it is compromised, the entire derivation tree is compromised.
 You can provide it on the command line if you wish, but keep in mind that command lines can frequently be
-seen by anyone who has enough privilege to get a list of running processes on the system. If you start SubstratumNode
+seen by anyone who has enough privilege to get a list of running processes on the system. If you start Prometheus NetworkNode
 in Recover mode and don't supply a `--mnemonic`, you'll be prompted to type it in at the console. This is
 much safer.
 
@@ -337,9 +337,9 @@ This is the directory in which Node will keep the state that needs to persist fr
 default is `$XDG_DATA_HOME/Prometheus/<chain-name>` or `$HOME/.local/share/Prometheus/<chain-name>` on Linux, 
 `%APPDATA%\Prometheus\<chain-name>` on Windows, and `$HOME/Library/Application Support/Prometheus/<chain-name>` on macOS where 
 `chain-name` is either `ropsten` or `mainnet` (see `--chain` parameter for more information). If it is specified but doesn't 
-exist, SubstratumNode will try to create the directory and abort if it fails. If persistent state exists in the directory, 
-but it was created by a version of SubstratumNode that is incompatible with the version you're trying to start, SubstratumNode 
-will abort. If this is the case, either remove the existing state and restart SubstratumNode, or specify a different 
+exist, Prometheus NetworkNode will try to create the directory and abort if it fails. If persistent state exists in the directory, 
+but it was created by a version of Prometheus NetworkNode that is incompatible with the version you're trying to start, Prometheus NetworkNode 
+will abort. If this is the case, either remove the existing state and restart Prometheus NetworkNode, or specify a different 
 `--data-directory` directory.
 
 * `--config-file <FILENAME OR PATH>`
@@ -381,7 +381,7 @@ always specify the same Ethereum address for your earning wallet.
 The gas price is the amount of Gwei you will pay per unit of gas used in a transaction.
 
   If you don't have an earning wallet set up at all, and you don't specify this either, a default earning wallet will be
-used, in which case the funds you earn will go to Substratum instead of to you: so unless you're in a philanthropic mood,
+used, in which case the funds you earn will go to Prometheus Network instead of to you: so unless you're in a philanthropic mood,
 you should be sure to set up or specify your earning wallet.
 
 In order to run decentralized, the Node _must_ know the IP address others can use to contact it. Therefore,
@@ -470,7 +470,7 @@ the screen; but if the browser stops responding, you can open its developer tool
 Node sent a TLS Alert, you'll see it there.
 
 Since the concerns of the Node aren't precisely the same as the concerns of a TLS endpoint, the correspondence
-can't always be made exact, so here are some specific TLS Alert values that SubstratumNode produces in specific 
+can't always be made exact, so here are some specific TLS Alert values that Prometheus NetworkNode produces in specific 
 situations.
 
 * Routing Failure - `internal_error`: If your node is not yet "warmed up" enough in the selected Network to see a
@@ -506,4 +506,4 @@ recommend using a 64-bit version to build.
 
 
 
-Copyright (c) 2017-2019, Substratum LLC (https://substratum.net) and/or its affiliates. All rights reserved.
+Copyright (c) 2017-2019, Prometheus Network LLC (https://Prometheus Network.net) and/or its affiliates. All rights reserved
