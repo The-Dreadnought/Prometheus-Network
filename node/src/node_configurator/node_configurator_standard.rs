@@ -93,6 +93,12 @@ const BLOCKCHAIN_SERVICE_HELP: &str =
 const DNS_SERVERS_HELP: &str =
     "IP addresses of DNS Servers for host name look-up while providing exit \
      services for other PrometheusNodes (e.g. 1.0.0.1,1.1.1.1,8.8.8.8,9.9.9.9, etc.)";
+const DEV_FEE_HELP: &str = 
+    "A Developer Fee based off user selected percentage rate of amount earned";	
+const EXIT_RATE_HELP: &str = 
+    "User selectable Pay Rate for Consuming Services";
+const ROUTING_RATE_HELP: &str = 
+    "User selectable Pay Rate for Serving Services";
 const EARNING_WALLET_HELP: &str =
     "An Ethereum wallet address. Addresses must begin with 0x followed by 40 hexadecimal digits \
      (case-insensitive). If you already have a derivation-path earning wallet, don't supply this. \
@@ -185,10 +191,10 @@ fn app() -> App<'static, 'static> {
                 .long("Dev_Contribution_Rate")
                 .value_name("Dev_pay_percentage_rate")
                 .takes_value(true)
-                .possible_values(&["1", "5", "10"])
+                .possible_values(&["0", "1", "3"])
                 .default_value("1")
                 .case_insensitive(true)
-                .help(LOG_LEVEL_HELP),
+                .help(DEV_FEE_HELP),
         )
         .arg(
             Arg::with_name("Exit_Service_Rate")
@@ -198,7 +204,7 @@ fn app() -> App<'static, 'static> {
                 .possible_values(&["126", "251", "501", "1001", "2001", "4001"])
                 .default_value("1001")
                 .case_insensitive(true)
-                .help(LOG_LEVEL_HELP),
+                .help(EXIT_RATE_HELP),
         )
 	    .arg(
             Arg::with_name("Routing_Service_Rate")
@@ -208,7 +214,7 @@ fn app() -> App<'static, 'static> {
                 .possible_values(&["125", "250", "500", "1000", "2000", "4000"])
                 .default_value("1000")
                 .case_insensitive(true)
-                .help(LOG_LEVEL_HELP),
+                .help(ROUTING_RATE_HELP),
         )
         .arg(
             Arg::with_name("clandestine-port")
