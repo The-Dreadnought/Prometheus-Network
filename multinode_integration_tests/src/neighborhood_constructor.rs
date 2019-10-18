@@ -6,6 +6,7 @@ use crate::prometheus_node::PrometheusNode;
 use crate::prometheus_node_cluster::PrometheusNodeCluster;
 use crate::prometheus_real_node::PrometheusRealNode;
 use crate::prometheus_real_node::{make_consuming_wallet_info, NodeStartupConfigBuilder};
+use node_lib::blockchain::blockchain_interface::chain_name_from_id;
 use node_lib::neighborhood::gossip::Gossip;
 use node_lib::neighborhood::gossip_producer::{GossipProducer, GossipProducerReal};
 use node_lib::neighborhood::neighborhood_database::NeighborhoodDatabase;
@@ -65,6 +66,7 @@ pub fn construct_neighborhood(
             .consuming_wallet_info(make_consuming_wallet_info(
                 model_db.root().public_key().to_string().as_str(),
             ))
+            .chain(chain_name_from_id(cluster.chain_id))
             .build(),
     );
     let (mock_node_map, adjacent_mock_node_keys) =
