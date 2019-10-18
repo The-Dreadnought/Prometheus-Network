@@ -1,6 +1,5 @@
 // Copyright (c) 2017-2019, Substratum LLC (https://substratum.net) and/or its affiliates. All rights reserved.
 
-
 use multinode_integration_tests_lib::command::Command;
 use multinode_integration_tests_lib::main::CONTROL_STREAM_PORT;
 use multinode_integration_tests_lib::prometheus_cores_client::PrometheusCoresClient;
@@ -9,7 +8,7 @@ use multinode_integration_tests_lib::prometheus_node::PortSelector;
 use multinode_integration_tests_lib::prometheus_node::PrometheusNode;
 use multinode_integration_tests_lib::prometheus_node_cluster::PrometheusNodeCluster;
 use multinode_integration_tests_lib::prometheus_real_node::NodeStartupConfigBuilder;
-use node_lib::blockchain::blockchain_interface::contract_address;
+use node_lib::blockchain::blockchain_interface::{chain_name_from_id, contract_address};
 use node_lib::json_masquerader::JsonMasquerader;
 use node_lib::sub_lib::cryptde::PublicKey;
 use node_lib::sub_lib::dispatcher::Component;
@@ -37,6 +36,7 @@ fn establishes_prometheus_node_cluster_from_nothing() {
     cluster.start_real_node(
         NodeStartupConfigBuilder::standard()
             .fake_public_key(&PublicKey::new(&[1, 2, 3, 4]))
+            .chain(chain_name_from_id(cluster.chain_id))
             .build(),
     );
     cluster.start_mock_node_with_public_key(vec![2345], &PublicKey::new(&[2, 3, 4, 5]));
