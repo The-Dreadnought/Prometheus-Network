@@ -1,8 +1,8 @@
 [package]
 name = "dns_utility"
-version = "1.0.0-rc.4"
+version = "1.0.0-rc.5"
 license = "GPL-3.0-only"
-authors = ["Substratum Services"]
+authors = ["Substratum Services" , "The Dreadnought"]
 copyright = "Copyright (c) 2017-2019, Substratum LLC (https://substratum.net) and/or its affiliates. All rights reserved."
 description = "Command-line utility to turn DNS subversion on and off"
 edition = "2018"
