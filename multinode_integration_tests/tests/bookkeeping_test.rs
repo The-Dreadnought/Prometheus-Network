@@ -10,6 +10,7 @@ use multinode_integration_tests_lib::prometheus_real_node::{
 };
 use node_lib::accountant::payable_dao::{PayableAccount, PayableDao, PayableDaoReal};
 use node_lib::accountant::receivable_dao::{ReceivableAccount, ReceivableDao, ReceivableDaoReal};
+use node_lib::blockchain::blockchain_interface::chain_name_from_id;
 use node_lib::database::db_initializer::{DbInitializer, DbInitializerReal};
 use node_lib::sub_lib::wallet::Wallet;
 use std::collections::HashMap;
@@ -114,6 +115,7 @@ pub fn start_lonely_real_node(cluster: &mut PrometheusNodeCluster) -> Prometheus
         NodeStartupConfigBuilder::standard()
             .earning_wallet_info(make_earning_wallet_info(&index.to_string()))
             .consuming_wallet_info(make_consuming_wallet_info(&index.to_string()))
+            .chain(chain_name_from_id(cluster.chain_id))
             .build(),
     )
 }
@@ -127,6 +129,7 @@ pub fn start_real_node(
         NodeStartupConfigBuilder::standard()
             .neighbor(neighbor)
             .earning_wallet_info(make_earning_wallet_info(&index.to_string()))
+            .chain(chain_name_from_id(cluster.chain_id))
             .build(),
     )
 }
