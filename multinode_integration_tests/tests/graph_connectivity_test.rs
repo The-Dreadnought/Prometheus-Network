@@ -1,6 +1,5 @@
 // Copyright (c) 2017-2019, Substratum LLC (https://substratum.net) and/or its affiliates. All rights reserved.
 
-
 use multinode_integration_tests_lib::multinode_gossip::{
     parse_gossip, GossipType, MultinodeGossip, StandardBuilder,
 };
@@ -10,6 +9,7 @@ use multinode_integration_tests_lib::prometheus_node_cluster::PrometheusNodeClus
 use multinode_integration_tests_lib::prometheus_real_node::{
     NodeStartupConfigBuilder, PrometheusRealNode,
 };
+use node_lib::blockchain::blockchain_interface::chain_name_from_id;
 use node_lib::neighborhood::gossip_acceptor::MAX_DEGREE;
 use node_lib::neighborhood::neighborhood_test_utils::db_from_node;
 use node_lib::neighborhood::neighborhood_test_utils::make_node_record;
@@ -25,6 +25,7 @@ fn graph_connects_but_does_not_over_connect() {
     let first_node = cluster.start_real_node(
         NodeStartupConfigBuilder::standard()
             .fake_public_key(&PublicKey::new(&[4, 3, 2, 0]))
+            .chain(chain_name_from_id(cluster.chain_id))
             .build(),
     );
     let real_nodes = (1..neighborhood_size)
@@ -33,6 +34,7 @@ fn graph_connects_but_does_not_over_connect() {
                 NodeStartupConfigBuilder::standard()
                     .neighbor(first_node.node_reference())
                     .fake_public_key(&PublicKey::new(&[4, 3, 2, index as u8]))
+                    .chain(chain_name_from_id(cluster.chain_id))
                     .build(),
             )
         })
